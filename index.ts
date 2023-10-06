@@ -1,14 +1,16 @@
-const add = (a: number, b: number): number => {
-    return a + b;
+class ValueHolder<T>{
+    value: T;
+
+    wrapper = (par: T): T[] => {
+        return [par];
+    }
 };
 
-const joinStrings = (a: string, b: string): string => {
-    return a + b;
-};
+const valueHolder = new ValueHolder<number>();
 
-function joiningStrings(a: string, b: string): string {
-    return (a + b).charAt(0);
-};
+const valueWrapper = <T>(par: T): T[] => {
+    return [par];
+}
 
-console.log(joinStrings('at', 're'));
-console.log(joiningStrings('gdrat', 're'));
+let s = valueWrapper<number>(10);
+console.log(s[0]);
